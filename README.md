@@ -1,10 +1,20 @@
-# 🔥 Algerian Forest Fire Prediction (Machine Learning Project)
+# 🔥 Algerian Forest Fire Prediction (Machine Learning + Flask Web App)
 
 ## 📌 Project Overview
 
-This project focuses on predicting the occurrence of forest fires in Algeria using machine learning techniques. The notebook covers the complete workflow including data preprocessing, exploratory data analysis (EDA), feature selection, model training, and performance evaluation.
+This project predicts forest fire risk in Algeria using machine learning and provides an interactive **Flask-based web application** for real-time predictions.
 
-The goal is to build a reliable classification model that can help in early fire risk detection and support preventive decision-making.
+It covers the complete ML workflow — data preprocessing, EDA, feature selection, model training, evaluation — and deployment using a modern web interface.
+
+---
+
+## 🌐 Web Application Features
+
+* User-friendly prediction form (HTML + Bootstrap)
+* Takes real-time meteorological inputs
+* Uses trained ML model for prediction
+* Displays **Fire Weather Index (FWI)**
+* Indicates fire risk level based on predicted value
 
 ---
 
@@ -15,6 +25,12 @@ Algerian-Forest-Fire-Prediction/
 │
 ├── Algerian_forest_fire.ipynb
 ├── feature_selection_and_model_training.ipynb
+├── main.py                 # Flask backend
+├── templates/
+│   └── index.html          # Frontend UI
+├── models.pkl              # Trained ML models
+├── scaler.pkl              # Feature scaler
+├── dataset/ (optional)
 ├── README.md
 ```
 
@@ -22,13 +38,20 @@ Algerian-Forest-Fire-Prediction/
 
 ## 🧪 Key Steps Performed
 
-* Dataset loading and cleaning
+### Machine Learning
+
+* Data cleaning & preprocessing
 * Exploratory Data Analysis (EDA)
-* Feature engineering and selection
-* Train-test split
-* Model training (classification algorithms)
-* Model evaluation using accuracy and other metrics
-* Comparison of model performance
+* Feature engineering & selection
+* Model training (Linear Regression)
+* Model evaluation
+* Model serialization using Pickle
+
+### Deployment
+
+* Flask backend (`main.py`)
+* HTML + Bootstrap frontend
+* Real-time prediction pipeline
 
 ---
 
@@ -36,45 +59,36 @@ Algerian-Forest-Fire-Prediction/
 
 * Python
 * Google Colab
-* Pandas
-* NumPy
-* Matplotlib & Seaborn
+* Pandas, NumPy
+* Matplotlib, Seaborn
 * Scikit-learn
+* Flask
+* HTML, CSS, Bootstrap
 
 ---
 
 ## 📊 Dataset
 
-The dataset contains meteorological and environmental features such as:
+The dataset includes environmental and meteorological features:
 
 * Temperature
-* Relative humidity
-* Wind speed
+* Relative Humidity (RH)
+* Wind Speed (WS)
 * Rain
-* Fire weather indices
+* FFMC, DMC, ISI indices
+* Region
 
-Target variable indicates whether a forest fire occurred or not.
-
----
-
-## 🚀 How to Run
-
-1. Clone the repository
-
-```bash
-git clone <your-repo-link>
-```
-
-2. Open the notebook in Google Colab or Jupyter
-
-3. Run all cells sequentially
+Target: Fire Weather Index (FWI)
 
 ---
 
-## 📈 Results
+## 📈 Model Output
 
-The trained model is able to predict forest fire occurrence with good accuracy after applying feature selection and tuning techniques.
+The application predicts **FWI (Fire Weather Index)**:
 
----
+* Low FWI → Low fire risk
+* High FWI → High fire risk
 
-## ⭐ If you find this project useful, consider giving it a star!
+
+
+## ⭐ If you find this project useful, consider giving
