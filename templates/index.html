@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forest Fire Prediction</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23333" width="1200" height="800"/></svg>');
+            background-size: cover;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .card-box {
+            background: rgba(0, 0, 0, 0.85);
+            padding: 40px;
+            border-radius: 16px;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        h1,
+        h2 {
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            font-weight: 600;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+
+        .btn-predict {
+            background: linear-gradient(135deg, #ffc107, #ff9800);
+            border: none;
+            font-weight: 700;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .btn-predict:hover {
+            opacity: 0.9;
+        }
+
+        /* Prediction box styling same as form */
+        .prediction-box {
+            background: rgba(0, 0, 0, 0.85);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            color: #ffc107;
+            font-weight: 700;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            font-size: 32px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card-box">
+        <h1>FOREST FIRE PREDICTION</h1>
+        <h2>Fire Prediction (Regression Model)</h2>
+
+        <form method="post" action="/">
+
+            <input type="number" name="temperature" class="form-control" id="temperature"
+                placeholder="Temperature (e.g. 31)" required>
+            <input type="number" name="rh" class="form-control" id="rh"
+                placeholder="Relative Humidity (e.g. 57)" required>
+            <input type="number" name="ws" class="form-control" id="ws"
+                placeholder="Wind Speed km/h (e.g. 18)" required>
+            <input type="number" name="rain" class="form-control" id="rain"
+                placeholder="Rain (e.g. 0.0)" step="any" required>
+            <input type="number" name="ffmc" class="form-control" id="ffmc"
+                placeholder="FFMC (e.g. 65.7)" step="any" required>
+            <input type="number" name="dmc" class="form-control" id="dmc"
+                placeholder="DMC (e.g. 3.4)" step="any" required>
+            <input type="number" name="isi" class="form-control" id="isi"
+                placeholder="ISI (e.g. 7.6)" step="any" required>
+            <input type="number" name="region" class="form-control" id="region"
+                placeholder="Region (0 or 1)" required>
+
+            <button type="submit" class="btn-predict w-100">Predict</button>
+
+        </form>
+
+        
+        {% if predict %}
+        <div class="prediction-box">
+            Prediction of FWI: {{ predict }}
+            <br>
+            <p style="font-size: 22px; color:white; margin-top: 20px;">Higher FWI values indicate higher forest fire risk.</p>
+        </div>
+        
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
